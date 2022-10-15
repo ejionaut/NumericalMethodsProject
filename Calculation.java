@@ -47,6 +47,9 @@ public class Calculation {
                         }
                     }
                }
+
+               // After division zeroing of other values.
+               // imbed here
             }
             StringPrinter(newMatrix);
         }
@@ -63,6 +66,8 @@ public class Calculation {
 
         return newMatrix;
     }
+
+    // Zeroing value method
 
     private static void StringPrinter(float[][] matrix , String[] formulation){
         String line = "";
