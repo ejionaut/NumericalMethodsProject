@@ -46,10 +46,50 @@ public class Calculation {
                             StringPrinter(newMatrix, formula);
                         }
                     }
+
+                    if(x == 0) {
+                        for(int c = 1; c < newMatrix.length; c++){
+                            float tempVal = newMatrix[c][0];
+                            for(int v = 0; v < newMatrix[0].length; v++){
+                                newMatrix[c][v] = (newMatrix[0][v] * (-tempVal)) + newMatrix[c][v];
+                            }
+                        }
+                    } else if(x == 1){
+                        for(int c = 0; c < newMatrix.length; c++){
+                            float tempVal = newMatrix[c][1];
+
+                            for(int v = 0; v < newMatrix[0].length; v++){
+                                if( c != x){
+                                    newMatrix[c][v] = (newMatrix[1][v] * (-tempVal)) + newMatrix[c][v];
+                                }
+                            }
+                        }
+                    } else if(x == 2){
+                        for(int c = 0; c < newMatrix.length; c++){
+                            float tempVal = newMatrix[c][2];
+                            
+
+                            for(int v = 0; v < newMatrix[0].length; v++){
+                                if( c != x){
+                                    newMatrix[c][v] = (newMatrix[2][v] * (-tempVal)) + newMatrix[c][v];
+                                }
+                            }
+                        }
+
+                    } else if (x == 3){
+                        for(int c = 0; c < newMatrix.length; c++){
+                            float tempVal = newMatrix[c][3];
+
+                            for(int v = 0; v < newMatrix[0].length; v++){
+                                if( c != x){
+                                    newMatrix[c][v] = (newMatrix[3][v] * (-tempVal)) + newMatrix[c][v];
+                                }
+                            }
+                        }
+
+                    }
                }
 
-               // After division zeroing of other values.
-               // imbed here
             }
             StringPrinter(newMatrix);
         }
