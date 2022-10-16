@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.EventListener;
 
 import javax.swing.*;
@@ -9,6 +10,7 @@ import javax.swing.*;
  */
 public class intoInterface {
     Calculation calculation = new Calculation();
+	static JFrame matrixFrame;
 
     public static void startPoint(){
 		JTextField rowTextField, columnTextField;
@@ -114,6 +116,7 @@ public class intoInterface {
 		}
 		errorText.setBounds(90, 72, 305, 88);
 		f.getContentPane().add(errorText);
+		f.setResizable(false);
 		f.setVisible(true);
     }
 
@@ -128,11 +131,11 @@ public class intoInterface {
 		
 		float[][] values = new float[row][column];
 
-		JFrame f = new JFrame("Panel test");
-		f.setIconImage(Toolkit.getDefaultToolkit().getImage("images/calculate_FILL0_wght400_GRAD0_opsz48.png"));
-		f.setTitle("View Accounts");
-		f.getContentPane().setBackground(new Color(255, 255, 255));
-		f.getContentPane().setLayout(null);
+		matrixFrame = new JFrame("Matrix Setting");
+		matrixFrame.setIconImage(Toolkit.getDefaultToolkit().getImage("images/calculate_FILL0_wght400_GRAD0_opsz48.png"));
+		matrixFrame.setTitle("View Accounts");
+		matrixFrame.getContentPane().setBackground(new Color(255, 255, 255));
+		matrixFrame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(102, 205, 170));
@@ -150,31 +153,31 @@ public class intoInterface {
 		textField_r1x2 = new JTextField();
 		textField_r1x2.setColumns(10);
 		textField_r1x2.setBounds(146, 96, 109, 29);
-		f.getContentPane().add(textField_r1x2);
+		matrixFrame.getContentPane().add(textField_r1x2);
 		
 		textField_r2x2 = new JTextField();
 		textField_r2x2.setColumns(10);
 		textField_r2x2.setBounds(146, 139, 109, 29);
-		f.getContentPane().add(textField_r2x2);
+		matrixFrame.getContentPane().add(textField_r2x2);
 		
 		textField_r2x1 = new JTextField();
 		textField_r2x1.setColumns(10);
 		textField_r2x1.setBounds(27, 139, 109, 29);
-		f.getContentPane().add(textField_r2x1);
+		matrixFrame.getContentPane().add(textField_r2x1);
 		
 		textField_r1x1 = new JTextField();
 		textField_r1x1.setColumns(10);
 		textField_r1x1.setBounds(27, 96, 109, 29);
-		f.getContentPane().add(textField_r1x1);
+		matrixFrame.getContentPane().add(textField_r1x1);
 		
 		textField_r1RHS.setColumns(10);
 		textField_r2RHS.setColumns(10);
-		f.getContentPane().add(textField_r1RHS);
-		f.getContentPane().add(RHSLabel);
-		f.getContentPane().add(textField_r2RHS);
+		matrixFrame.getContentPane().add(textField_r1RHS);
+		matrixFrame.getContentPane().add(RHSLabel);
+		matrixFrame.getContentPane().add(textField_r2RHS);
 
 		if(column == 3) {
-			f.setSize(415,281);
+			matrixFrame.setSize(415,281);
 			panel.setBounds(0, 229, 418, 16);
 
 			uiMainTextLogo.setBounds(70, 6, 360, 56);
@@ -194,6 +197,7 @@ public class intoInterface {
 						values[1][0] = Float.parseFloat(textField_r1x1.getText());
 						values[1][1] = Float.parseFloat(textField_r2x2.getText());
 						values[1][2] = Float.parseFloat(textField_r2RHS.getText());
+						Calculation.CreateGauss(values);
 					} catch (Exception c) {
 						errorInput(1);
 					}
@@ -203,7 +207,7 @@ public class intoInterface {
 			JTextField  textField_r3x1, textField_r3x2, textField_r3x3, textField_r3RHS, textField_r1x3, 
 			textField_r2x3;
 
-			f.setSize(535,325);
+			matrixFrame.setSize(535,325);
 			RHSLabel.setBounds(428, 72, 46, 14);
 			uiMainTextLogo.setBounds(122, 10, 360, 56);
 			textField_r1RHS.setBounds(384, 96, 109, 29);
@@ -216,36 +220,36 @@ public class intoInterface {
 			textField_r1x3 = new JTextField();
 			textField_r1x3.setColumns(10);
 			textField_r1x3.setBounds(265, 96, 109, 29);
-			f.getContentPane().add(textField_r1x3);
+			matrixFrame.getContentPane().add(textField_r1x3);
 			
 			textField_r2x3 = new JTextField();
 			textField_r2x3.setColumns(10);
 			textField_r2x3.setBounds(265, 139, 109, 29);
-			f.getContentPane().add(textField_r2x3);
+			matrixFrame.getContentPane().add(textField_r2x3);
 
 			JLabel x3Label = new JLabel("X3");
 			x3Label.setBounds(309, 72, 46, 14);
-			f.getContentPane().add(x3Label);
+			matrixFrame.getContentPane().add(x3Label);
 			
 			textField_r3x1 = new JTextField();
 			textField_r3x1.setColumns(10);
 			textField_r3x1.setBounds(27, 182, 109, 29);
-			f.getContentPane().add(textField_r3x1);
+			matrixFrame.getContentPane().add(textField_r3x1);
 			
 			textField_r3x2 = new JTextField();
 			textField_r3x2.setColumns(10);
 			textField_r3x2.setBounds(146, 182, 109, 29);
-			f.getContentPane().add(textField_r3x2);
+			matrixFrame.getContentPane().add(textField_r3x2);
 			
 			textField_r3x3 = new JTextField();
 			textField_r3x3.setColumns(10);
 			textField_r3x3.setBounds(265, 182, 109, 29);
-			f.getContentPane().add(textField_r3x3);
+			matrixFrame.getContentPane().add(textField_r3x3);
 			
 			textField_r3RHS = new JTextField();
 			textField_r3RHS.setColumns(10);
 			textField_r3RHS.setBounds(384, 182, 109, 29);
-			f.getContentPane().add(textField_r3RHS);	
+			matrixFrame.getContentPane().add(textField_r3RHS);	
 			
 			solveButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -262,6 +266,7 @@ public class intoInterface {
 						values[2][1] = Float.parseFloat(textField_r3x2.getText());
 						values[2][2] = Float.parseFloat(textField_r3x3.getText());
 						values[2][3] = Float.parseFloat(textField_r3RHS.getText());
+						Calculation.CreateGauss(values);
 					} catch (Exception c) {
 						errorInput(1);
 					}
@@ -273,7 +278,7 @@ public class intoInterface {
 			textField_r3x4, textField_r3RHS, textField_r4x1,textField_r4x2,textField_r4x3,textField_r4x4, 
 			textField_r4RHS, textField_r1x3, textField_r2x3;
 
-			f.setSize(653,375);
+			matrixFrame.setSize(653,375);
 			panel.setBounds(0, 322, 639, 16);
 
 			uiMainTextLogo.setForeground(SystemColor.controlDkShadow);
@@ -288,81 +293,81 @@ public class intoInterface {
 
 			JLabel x3Label = new JLabel("X3");
 			x3Label.setBounds(309, 72, 46, 14);
-			f.getContentPane().add(x3Label);
+			matrixFrame.getContentPane().add(x3Label);
 
 			JLabel x4Label = new JLabel("X4");
 			x4Label.setBounds(436, 72, 46, 14);
-			f.getContentPane().add(x4Label);
+			matrixFrame.getContentPane().add(x4Label);
 
 			textField_r1x3 = new JTextField();
 			textField_r1x3.setColumns(10);
 			textField_r1x3.setBounds(265, 96, 109, 29);
-			f.getContentPane().add(textField_r1x3);
+			matrixFrame.getContentPane().add(textField_r1x3);
 			
 			textField_r2x3 = new JTextField();
 			textField_r2x3.setColumns(10);
 			textField_r2x3.setBounds(265, 139, 109, 29);
-			f.getContentPane().add(textField_r2x3);
+			matrixFrame.getContentPane().add(textField_r2x3);
 
 			textField_r1x4 = new JTextField();
 			textField_r1x4.setColumns(10);
 			textField_r1x4.setBounds(384, 96, 109, 29);
-			f.getContentPane().add(textField_r1x4);
+			matrixFrame.getContentPane().add(textField_r1x4);
 
 			textField_r2x4 = new JTextField();
 			textField_r2x4.setColumns(10);
 			textField_r2x4.setBounds(384, 139, 109, 29);
-			f.getContentPane().add(textField_r2x4);
+			matrixFrame.getContentPane().add(textField_r2x4);
 
 			textField_r4x1 = new JTextField();
 			textField_r4x1.setColumns(10);
 			textField_r4x1.setBounds(27, 225, 109, 29);
-			f.getContentPane().add(textField_r4x1);
+			matrixFrame.getContentPane().add(textField_r4x1);
 			
 			textField_r3x1 = new JTextField();
 			textField_r3x1.setColumns(10);
 			textField_r3x1.setBounds(27, 182, 109, 29);
-			f.getContentPane().add(textField_r3x1);
+			matrixFrame.getContentPane().add(textField_r3x1);
 			
 			textField_r3x2 = new JTextField();
 			textField_r3x2.setColumns(10);
 			textField_r3x2.setBounds(146, 182, 109, 29);
-			f.getContentPane().add(textField_r3x2);
+			matrixFrame.getContentPane().add(textField_r3x2);
 			
 			textField_r4x2 = new JTextField();
 			textField_r4x2.setColumns(10);
 			textField_r4x2.setBounds(146, 225, 109, 29);
-			f.getContentPane().add(textField_r4x2);
+			matrixFrame.getContentPane().add(textField_r4x2);
 			
 			textField_r4x3 = new JTextField();
 			textField_r4x3.setColumns(10);
 			textField_r4x3.setBounds(265, 225, 109, 29);
-			f.getContentPane().add(textField_r4x3);
+			matrixFrame.getContentPane().add(textField_r4x3);
 			
 			textField_r3x3 = new JTextField();
 			textField_r3x3.setColumns(10);
 			textField_r3x3.setBounds(265, 182, 109, 29);
-			f.getContentPane().add(textField_r3x3);
+			matrixFrame.getContentPane().add(textField_r3x3);
 			
 			textField_r3x4 = new JTextField();
 			textField_r3x4.setColumns(10);
 			textField_r3x4.setBounds(384, 182, 109, 29);
-			f.getContentPane().add(textField_r3x4);
+			matrixFrame.getContentPane().add(textField_r3x4);
 			
 			textField_r4x4 = new JTextField();
 			textField_r4x4.setColumns(10);
 			textField_r4x4.setBounds(384, 225, 109, 29);
-			f.getContentPane().add(textField_r4x4);
+			matrixFrame.getContentPane().add(textField_r4x4);
 			
 			textField_r4RHS = new JTextField();
 			textField_r4RHS.setColumns(10);
 			textField_r4RHS.setBounds(503, 225, 109, 29);
-			f.getContentPane().add(textField_r4RHS);
+			matrixFrame.getContentPane().add(textField_r4RHS);
 			
 			textField_r3RHS = new JTextField();
 			textField_r3RHS.setColumns(10);
 			textField_r3RHS.setBounds(503, 182, 109, 29);
-			f.getContentPane().add(textField_r3RHS);
+			matrixFrame.getContentPane().add(textField_r3RHS);
 
 			solveButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -387,34 +392,70 @@ public class intoInterface {
 						values[3][2] = Float.parseFloat(textField_r4x3.getText());
 						values[3][3] = Float.parseFloat(textField_r4x4.getText());
 						values[3][4] = Float.parseFloat(textField_r4RHS.getText());
+						Calculation.CreateGauss(values);
 					} catch (Exception c) {
 						errorInput(1);
 					}
 				}
 			});
 		}
-		f.setVisible(true);
-		f.getContentPane().add(uiMainTextLogo);
-		f.getContentPane().add(panel);
-		f.setLocationRelativeTo(null);
+		matrixFrame.setVisible(true);
+		matrixFrame.getContentPane().add(uiMainTextLogo);
+		matrixFrame.getContentPane().add(panel);
+		matrixFrame.setLocationRelativeTo(null);
 
 		btnReenterMatrix.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				startPoint();
-				f.setVisible(false);
+				matrixFrame.setVisible(false);
 			}
 		});
-		f.getContentPane().add(btnReenterMatrix);
+		matrixFrame.getContentPane().add(btnReenterMatrix);
 		
 
 		JLabel x1Label = new JLabel("X1");
 		x1Label.setBounds(70, 72, 46, 14);
-		f.getContentPane().add(x1Label);
+		matrixFrame.getContentPane().add(x1Label);
 		
 		JLabel x2Label = new JLabel("X2");
 		x2Label.setBounds(190, 72, 46, 14);
-		f.getContentPane().add(x2Label);
+		matrixFrame.getContentPane().add(x2Label);
+		matrixFrame.setResizable(false);
+		matrixFrame.getContentPane().add(solveButton);
+	 }
 
-		f.getContentPane().add(solveButton);
+	 public static void printed(ArrayList<String> test) {
+		JFrame f = new JFrame("Solution");
+		f.setIconImage(Toolkit.getDefaultToolkit().getImage("images/calculate_FILL0_wght400_GRAD0_opsz48.png"));
+		f.setTitle("View Accounts");
+		f.getContentPane().setBackground(new Color(255, 255, 255));
+		f.setSize(517,732);
+		f.setLocationRelativeTo(matrixFrame);
+		f.getContentPane().setLayout(null);
+        f.setDefaultCloseOperation(f.HIDE_ON_CLOSE);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(102, 205, 170));
+		panel.setBounds(0, 679, 506, 16);
+		f.getContentPane().add(panel);
+		
+		JLabel uiMainTextLogo = new JLabel("Gauss Jordan Elimination");
+		uiMainTextLogo.setForeground(SystemColor.controlDkShadow);
+		uiMainTextLogo.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+		uiMainTextLogo.setBounds(112, 10, 360, 56);
+		f.getContentPane().add(uiMainTextLogo);
+		
+		JTextPane errorText = new JTextPane();
+		errorText.setEditable(false);
+		errorText.setFont(new Font("Segoe UI Light", Font.PLAIN, 15));
+		String line = " ";
+		for (String string : test) {
+			line += string;
+			line += "\n";
+		}
+		errorText.setText(line);
+		errorText.setBounds(10, 65, 483, 604);
+		f.getContentPane().add(errorText);
+		f.setVisible(true);
 	 }
 }

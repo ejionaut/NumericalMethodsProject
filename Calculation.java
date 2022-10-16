@@ -1,32 +1,11 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Calculation {
-    public static void createMatrix(int row, int column){
-        Scanner kbd = new Scanner(System.in);
+    intoInterface interface1 = new intoInterface();
+    static ArrayList<String> words = new ArrayList<>();
 
-        float[][] matrix = new float[row][column];
-        int columnCounter = 1;
-        int rowCounter = 1;
-
-        for(int x = 0; x < matrix.length; x++){
-            for(int y = 0; y < matrix[0].length; y++){
-                if(y == matrix[0].length - 1) {
-                    System.out.println("Input rhs of row " +rowCounter);
-                    matrix[x][y] = kbd.nextFloat();
-                } else {
-                    System.out.println("Input x" + columnCounter +" of row " +rowCounter);
-                    matrix[x][y] = kbd.nextFloat();
-                    columnCounter++;
-                }
-            }
-            columnCounter = 1;
-            rowCounter++;
-        }
-
-        CreateGauss(matrix);
-    }
-
-    private static void CreateGauss(float[][] matrix){
+    public static void CreateGauss(float[][] matrix){
         float[][] newMatrix = matrix;
         String[] formula = new String[2];
 
@@ -93,6 +72,8 @@ public class Calculation {
             }
             StringPrinter(newMatrix);
         }
+
+        intoInterface.printed(words);
     }
 
     private static float[][] rowSwapper(float[][] matrix , int r1, int r2){
@@ -126,11 +107,10 @@ public class Calculation {
                     line += matrix[x][y] + " ";
                 }
             }
-            System.out.println(line);
+            words.add(line);
             line = "";
         }
-
-        System.out.println(" ");
+        words.add(line);
     }
 
     private static void StringPrinter(float[][] matrix){
@@ -146,11 +126,10 @@ public class Calculation {
                     line += matrix[x][y] + " ";
                 }
             }
-            System.out.println(line);
+            words.add(line);
             line = "";
         }
-
-        System.out.println(" ");
+        words.add(line);
     }
 
     private static void printFinal(float[][] matrix) {
