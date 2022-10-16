@@ -55,14 +55,19 @@ public class intoInterface {
 		calcButton.setBounds(35, 146, 179, 23);
         calcButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int row = Integer.parseInt(rowTextField.getText());
-                int column = Integer.parseInt(columnTextField.getText());
-                if(row  > 0 && row <= 4 && column > 0 && column <= 5 && row < column && row + 1 == column) {
-					matrix(column,row);
-					f.setVisible(false);
-                } else {
-                    errorInput();
-                }
+				try{
+					int row = Integer.parseInt(rowTextField.getText());
+					int column = Integer.parseInt(columnTextField.getText());
+					if(row  > 0 && row <= 4 && column > 0 && column <= 5 && row < column && row + 1 == column) {
+						matrix(column,row);
+						f.setVisible(false);
+					} else {
+						errorInput();
+					}
+				} catch(Exception c){
+					errorInput();
+				}
+                
             }
         });
 		f.getContentPane().add(calcButton);
