@@ -62,10 +62,10 @@ public class intoInterface {
 						matrix(column,row);
 						f.setVisible(false);
 					} else {
-						errorInput();
+						errorInput(0);
 					}
 				} catch(Exception c){
-					errorInput();
+					errorInput(0);
 				}
                 
             }
@@ -83,7 +83,7 @@ public class intoInterface {
         f.setResizable(false);
     }
 
-    private static void errorInput(){
+    private static void errorInput(int error){
         JFrame f = new JFrame("Panel test");
 		f.setIconImage(Toolkit.getDefaultToolkit().getImage("images/calculate_FILL0_wght400_GRAD0_opsz48.png"));
 		f.setTitle("View Accounts");
@@ -107,7 +107,11 @@ public class intoInterface {
 		JTextPane errorText = new JTextPane();
 		errorText.setEditable(false);
 		errorText.setFont(new Font("Segoe UI Light", Font.PLAIN, 15));
-		errorText.setText("An error has been found ! Please check the values that were inputed. \r\n\r\nAvailable sizes : 2x3 | 3x4 | 4x5");
+		if (error == 0) {
+			errorText.setText("An error has been found ! Please check the values that were inputed. \r\n\r\nAvailable sizes : 2x3 | 3x4 | 4x5");
+		} else {
+			errorText.setText("An error has been found ! Please check the values that were inputed. \r\n\r\nOnly positive or negative values are accepted. Any other input is rejected");
+		}
 		errorText.setBounds(90, 72, 305, 88);
 		f.getContentPane().add(errorText);
 		f.setVisible(true);
@@ -191,7 +195,7 @@ public class intoInterface {
 						values[1][1] = Float.parseFloat(textField_r2x2.getText());
 						values[1][2] = Float.parseFloat(textField_r2RHS.getText());
 					} catch (Exception c) {
-						errorInput();
+						errorInput(1);
 					}
 				}
 			});
@@ -259,7 +263,7 @@ public class intoInterface {
 						values[2][2] = Float.parseFloat(textField_r3x3.getText());
 						values[2][3] = Float.parseFloat(textField_r3RHS.getText());
 					} catch (Exception c) {
-						errorInput();
+						errorInput(1);
 					}
 				}
 			});
@@ -384,7 +388,7 @@ public class intoInterface {
 						values[3][3] = Float.parseFloat(textField_r4x4.getText());
 						values[3][4] = Float.parseFloat(textField_r4RHS.getText());
 					} catch (Exception c) {
-						errorInput();
+						errorInput(1);
 					}
 				}
 			});
