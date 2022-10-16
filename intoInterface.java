@@ -84,7 +84,7 @@ public class intoInterface {
 
     private static void errorInput(){
         JFrame f = new JFrame("Panel test");
-		f.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\63928\\Desktop\\sageorbLS.png"));
+		f.setIconImage(Toolkit.getDefaultToolkit().getImage("images/calculate_FILL0_wght400_GRAD0_opsz48.png"));
 		f.setTitle("View Accounts");
 		f.getContentPane().setBackground(new Color(255, 255, 255));
 		f.setSize(517,242);
@@ -120,7 +120,7 @@ public class intoInterface {
 	 private static void matrix2x3() {
 
 		JFrame f = new JFrame("Panel test");
-		f.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\63928\\Desktop\\sageorbLS.png"));
+		f.setIconImage(Toolkit.getDefaultToolkit().getImage("images/calculate_FILL0_wght400_GRAD0_opsz48.png"));
 		f.setTitle("View Accounts");
 		f.getContentPane().setBackground(new Color(255, 255, 255));
 		f.setSize(534,286);
