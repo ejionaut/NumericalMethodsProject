@@ -58,7 +58,7 @@ public class intoInterface {
                 int row = Integer.parseInt(rowTextField.getText());
                 int column = Integer.parseInt(columnTextField.getText());
                 if(row  > 0 && row <= 4 && column > 0 && column <= 5 && row < column && row + 1 == column) {
-					matrix(column);
+					matrix(column,row);
 					f.setVisible(false);
                 } else {
                     errorInput();
@@ -113,9 +113,11 @@ public class intoInterface {
      */
 
 	 // matrix
-	 private static void matrix(int column) {
+	 private static void matrix(int column, int row) {
 		JTextField textField_r1x2, textField_r2x2, textField_r2x1, textField_r1x1,textField_r1RHS,
 		 textField_r2RHS;
+		
+		float[][] values = new float[row][column];
 
 		JFrame f = new JFrame("Panel test");
 		f.setIconImage(Toolkit.getDefaultToolkit().getImage("images/calculate_FILL0_wght400_GRAD0_opsz48.png"));
@@ -136,6 +138,32 @@ public class intoInterface {
 		textField_r2RHS = new JTextField();
 		textField_r1RHS = new JTextField();
 
+		textField_r1x2 = new JTextField();
+		textField_r1x2.setColumns(10);
+		textField_r1x2.setBounds(146, 96, 109, 29);
+		f.getContentPane().add(textField_r1x2);
+		
+		textField_r2x2 = new JTextField();
+		textField_r2x2.setColumns(10);
+		textField_r2x2.setBounds(146, 139, 109, 29);
+		f.getContentPane().add(textField_r2x2);
+		
+		textField_r2x1 = new JTextField();
+		textField_r2x1.setColumns(10);
+		textField_r2x1.setBounds(27, 139, 109, 29);
+		f.getContentPane().add(textField_r2x1);
+		
+		textField_r1x1 = new JTextField();
+		textField_r1x1.setColumns(10);
+		textField_r1x1.setBounds(27, 96, 109, 29);
+		f.getContentPane().add(textField_r1x1);
+		
+		textField_r1RHS.setColumns(10);
+		textField_r2RHS.setColumns(10);
+		f.getContentPane().add(textField_r1RHS);
+		f.getContentPane().add(RHSLabel);
+		f.getContentPane().add(textField_r2RHS);
+
 		if(column == 3) {
 			f.setSize(415,281);
 			panel.setBounds(0, 229, 418, 16);
@@ -148,6 +176,16 @@ public class intoInterface {
 			textField_r2RHS.setBounds(265, 139, 109, 29);
 			RHSLabel.setBounds(309, 72, 46, 14);
 
+			solveButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					values[0][0] = Float.parseFloat(textField_r1x1.getText());
+					values[0][1] = Float.parseFloat(textField_r1x2.getText());
+					values[0][2] = Float.parseFloat(textField_r1RHS.getText());
+					values[1][0] = Float.parseFloat(textField_r1x1.getText());
+					values[1][1] = Float.parseFloat(textField_r2x2.getText());
+					values[1][2] = Float.parseFloat(textField_r2RHS.getText());
+				}
+			});
 		} else if (column == 4) {
 			JTextField  textField_r3x1, textField_r3x2, textField_r3x3, textField_r3RHS, textField_r1x3, 
 			textField_r2x3;
@@ -194,7 +232,24 @@ public class intoInterface {
 			textField_r3RHS = new JTextField();
 			textField_r3RHS.setColumns(10);
 			textField_r3RHS.setBounds(384, 182, 109, 29);
-			f.getContentPane().add(textField_r3RHS);		
+			f.getContentPane().add(textField_r3RHS);	
+			
+			solveButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					values[0][0] = Float.parseFloat(textField_r1x1.getText());
+					values[0][1] = Float.parseFloat(textField_r1x2.getText());
+					values[0][2] = Float.parseFloat(textField_r1x3.getText());
+					values[0][3] = Float.parseFloat(textField_r1RHS.getText());
+					values[1][0] = Float.parseFloat(textField_r1x1.getText());
+					values[1][1] = Float.parseFloat(textField_r2x2.getText());
+					values[1][2] = Float.parseFloat(textField_r2x3.getText());
+					values[1][3] = Float.parseFloat(textField_r2RHS.getText());
+					values[2][0] = Float.parseFloat(textField_r3x1.getText());
+					values[2][1] = Float.parseFloat(textField_r3x2.getText());
+					values[2][2] = Float.parseFloat(textField_r3x3.getText());
+					values[2][3] = Float.parseFloat(textField_r3RHS.getText());
+				}
+			});
 
 		} else if (column == 5) {
 			JTextField textField_r1x4, textField_r2x4, textField_r3x1, textField_r3x2, textField_r3x3,
@@ -291,12 +346,36 @@ public class intoInterface {
 			textField_r3RHS.setColumns(10);
 			textField_r3RHS.setBounds(503, 182, 109, 29);
 			f.getContentPane().add(textField_r3RHS);
+
+			solveButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					values[0][0] = Float.parseFloat(textField_r1x1.getText());
+					values[0][1] = Float.parseFloat(textField_r1x2.getText());
+					values[0][2] = Float.parseFloat(textField_r1x3.getText());
+					values[0][3] = Float.parseFloat(textField_r1x4.getText());
+					values[0][4] = Float.parseFloat(textField_r1RHS.getText());
+					values[1][0] = Float.parseFloat(textField_r1x1.getText());
+					values[1][1] = Float.parseFloat(textField_r2x2.getText());
+					values[1][2] = Float.parseFloat(textField_r2x3.getText());
+					values[1][3] = Float.parseFloat(textField_r2x4.getText());
+					values[1][4] = Float.parseFloat(textField_r2RHS.getText());
+					values[2][0] = Float.parseFloat(textField_r3x1.getText());
+					values[2][1] = Float.parseFloat(textField_r3x2.getText());
+					values[2][2] = Float.parseFloat(textField_r3x3.getText());
+					values[2][3] = Float.parseFloat(textField_r3x4.getText());
+					values[2][4] = Float.parseFloat(textField_r3RHS.getText());
+					values[3][0] = Float.parseFloat(textField_r4x1.getText());
+					values[3][1] = Float.parseFloat(textField_r4x2.getText());
+					values[3][2] = Float.parseFloat(textField_r4x3.getText());
+					values[3][3] = Float.parseFloat(textField_r4x4.getText());
+					values[3][4] = Float.parseFloat(textField_r4RHS.getText());
+				}
+			});
 		}
 		f.setVisible(true);
 		f.getContentPane().add(uiMainTextLogo);
 		f.getContentPane().add(panel);
 		f.setLocationRelativeTo(null);
-		f.getContentPane().add(solveButton);
 
 		btnReenterMatrix.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -306,31 +385,6 @@ public class intoInterface {
 		});
 		f.getContentPane().add(btnReenterMatrix);
 		
-		textField_r1x2 = new JTextField();
-		textField_r1x2.setColumns(10);
-		textField_r1x2.setBounds(146, 96, 109, 29);
-		f.getContentPane().add(textField_r1x2);
-		
-		textField_r2x2 = new JTextField();
-		textField_r2x2.setColumns(10);
-		textField_r2x2.setBounds(146, 139, 109, 29);
-		f.getContentPane().add(textField_r2x2);
-		
-		textField_r2x1 = new JTextField();
-		textField_r2x1.setColumns(10);
-		textField_r2x1.setBounds(27, 139, 109, 29);
-		f.getContentPane().add(textField_r2x1);
-		
-		textField_r1x1 = new JTextField();
-		textField_r1x1.setColumns(10);
-		textField_r1x1.setBounds(27, 96, 109, 29);
-		f.getContentPane().add(textField_r1x1);
-		
-		textField_r1RHS.setColumns(10);
-		textField_r2RHS.setColumns(10);
-		f.getContentPane().add(textField_r1RHS);
-		f.getContentPane().add(RHSLabel);
-		f.getContentPane().add(textField_r2RHS);
 
 		JLabel x1Label = new JLabel("X1");
 		x1Label.setBounds(70, 72, 46, 14);
@@ -339,5 +393,7 @@ public class intoInterface {
 		JLabel x2Label = new JLabel("X2");
 		x2Label.setBounds(190, 72, 46, 14);
 		f.getContentPane().add(x2Label);
+
+		f.getContentPane().add(solveButton);
 	 }
 }
