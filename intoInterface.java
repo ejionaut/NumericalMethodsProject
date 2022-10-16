@@ -183,12 +183,16 @@ public class intoInterface {
 
 			solveButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					values[0][0] = Float.parseFloat(textField_r1x1.getText());
-					values[0][1] = Float.parseFloat(textField_r1x2.getText());
-					values[0][2] = Float.parseFloat(textField_r1RHS.getText());
-					values[1][0] = Float.parseFloat(textField_r1x1.getText());
-					values[1][1] = Float.parseFloat(textField_r2x2.getText());
-					values[1][2] = Float.parseFloat(textField_r2RHS.getText());
+					try {
+						values[0][0] = Float.parseFloat(textField_r1x1.getText());
+						values[0][1] = Float.parseFloat(textField_r1x2.getText());
+						values[0][2] = Float.parseFloat(textField_r1RHS.getText());
+						values[1][0] = Float.parseFloat(textField_r1x1.getText());
+						values[1][1] = Float.parseFloat(textField_r2x2.getText());
+						values[1][2] = Float.parseFloat(textField_r2RHS.getText());
+					} catch (Exception c) {
+						errorInput();
+					}
 				}
 			});
 		} else if (column == 4) {
@@ -241,18 +245,22 @@ public class intoInterface {
 			
 			solveButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					values[0][0] = Float.parseFloat(textField_r1x1.getText());
-					values[0][1] = Float.parseFloat(textField_r1x2.getText());
-					values[0][2] = Float.parseFloat(textField_r1x3.getText());
-					values[0][3] = Float.parseFloat(textField_r1RHS.getText());
-					values[1][0] = Float.parseFloat(textField_r1x1.getText());
-					values[1][1] = Float.parseFloat(textField_r2x2.getText());
-					values[1][2] = Float.parseFloat(textField_r2x3.getText());
-					values[1][3] = Float.parseFloat(textField_r2RHS.getText());
-					values[2][0] = Float.parseFloat(textField_r3x1.getText());
-					values[2][1] = Float.parseFloat(textField_r3x2.getText());
-					values[2][2] = Float.parseFloat(textField_r3x3.getText());
-					values[2][3] = Float.parseFloat(textField_r3RHS.getText());
+					try {
+						values[0][0] = Float.parseFloat(textField_r1x1.getText());
+						values[0][1] = Float.parseFloat(textField_r1x2.getText());
+						values[0][2] = Float.parseFloat(textField_r1x3.getText());
+						values[0][3] = Float.parseFloat(textField_r1RHS.getText());
+						values[1][0] = Float.parseFloat(textField_r1x1.getText());
+						values[1][1] = Float.parseFloat(textField_r2x2.getText());
+						values[1][2] = Float.parseFloat(textField_r2x3.getText());
+						values[1][3] = Float.parseFloat(textField_r2RHS.getText());
+						values[2][0] = Float.parseFloat(textField_r3x1.getText());
+						values[2][1] = Float.parseFloat(textField_r3x2.getText());
+						values[2][2] = Float.parseFloat(textField_r3x3.getText());
+						values[2][3] = Float.parseFloat(textField_r3RHS.getText());
+					} catch (Exception c) {
+						errorInput();
+					}
 				}
 			});
 
@@ -354,26 +362,30 @@ public class intoInterface {
 
 			solveButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					values[0][0] = Float.parseFloat(textField_r1x1.getText());
-					values[0][1] = Float.parseFloat(textField_r1x2.getText());
-					values[0][2] = Float.parseFloat(textField_r1x3.getText());
-					values[0][3] = Float.parseFloat(textField_r1x4.getText());
-					values[0][4] = Float.parseFloat(textField_r1RHS.getText());
-					values[1][0] = Float.parseFloat(textField_r1x1.getText());
-					values[1][1] = Float.parseFloat(textField_r2x2.getText());
-					values[1][2] = Float.parseFloat(textField_r2x3.getText());
-					values[1][3] = Float.parseFloat(textField_r2x4.getText());
-					values[1][4] = Float.parseFloat(textField_r2RHS.getText());
-					values[2][0] = Float.parseFloat(textField_r3x1.getText());
-					values[2][1] = Float.parseFloat(textField_r3x2.getText());
-					values[2][2] = Float.parseFloat(textField_r3x3.getText());
-					values[2][3] = Float.parseFloat(textField_r3x4.getText());
-					values[2][4] = Float.parseFloat(textField_r3RHS.getText());
-					values[3][0] = Float.parseFloat(textField_r4x1.getText());
-					values[3][1] = Float.parseFloat(textField_r4x2.getText());
-					values[3][2] = Float.parseFloat(textField_r4x3.getText());
-					values[3][3] = Float.parseFloat(textField_r4x4.getText());
-					values[3][4] = Float.parseFloat(textField_r4RHS.getText());
+					try {
+						values[0][0] = Float.parseFloat(textField_r1x1.getText());
+						values[0][1] = Float.parseFloat(textField_r1x2.getText());
+						values[0][2] = Float.parseFloat(textField_r1x3.getText());
+						values[0][3] = Float.parseFloat(textField_r1x4.getText());
+						values[0][4] = Float.parseFloat(textField_r1RHS.getText());
+						values[1][0] = Float.parseFloat(textField_r1x1.getText());
+						values[1][1] = Float.parseFloat(textField_r2x2.getText());
+						values[1][2] = Float.parseFloat(textField_r2x3.getText());
+						values[1][3] = Float.parseFloat(textField_r2x4.getText());
+						values[1][4] = Float.parseFloat(textField_r2RHS.getText());
+						values[2][0] = Float.parseFloat(textField_r3x1.getText());
+						values[2][1] = Float.parseFloat(textField_r3x2.getText());
+						values[2][2] = Float.parseFloat(textField_r3x3.getText());
+						values[2][3] = Float.parseFloat(textField_r3x4.getText());
+						values[2][4] = Float.parseFloat(textField_r3RHS.getText());
+						values[3][0] = Float.parseFloat(textField_r4x1.getText());
+						values[3][1] = Float.parseFloat(textField_r4x2.getText());
+						values[3][2] = Float.parseFloat(textField_r4x3.getText());
+						values[3][3] = Float.parseFloat(textField_r4x4.getText());
+						values[3][4] = Float.parseFloat(textField_r4RHS.getText());
+					} catch (Exception c) {
+						errorInput();
+					}
 				}
 			});
 		}
